@@ -61,7 +61,7 @@ python prepare_data.py
 ```
 This will split the raw training data into 90% Training (45,000) and 10% Validation (5,000).
 #### <em>Augmentation</em>:  
-I placed data argumentation in ```dataset.py```
+I placed data augmentation in ```dataset.py```
 ```
 data_transforms = {
     'train': transforms.Compose([
@@ -145,14 +145,14 @@ It randomly selects an image from the test set, and displays the image with its 
 </p>
 
 ## Evaluation
-To evaluate the trained model on the test set, run the command - 
+To evaluate your trained model on the test set, run the command - 
 ```
 python eval.py
 ```
 It will show the model's prediction accuracy on the test set.
 
 ## Loss Curve
-After training for 80 epochs, the VGG-16 model could achieve 93.54% accuracy on the validation set and 92.45% on the test set.
+After training for 80 epochs, the VGG-16 model could achieve 93.54% accuracy on the validation set and 92.45% accuracy on the test set.
 
 <br>
 <p align="center">
