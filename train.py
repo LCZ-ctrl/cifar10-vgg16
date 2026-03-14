@@ -65,6 +65,7 @@ def train():
             loss = criterion(outputs, labels)
             loss.backward()
             optimizer.step()
+
             train_loss += loss.item() * imgs.size(0)
             train_correct += calculate_correct(outputs, labels)
 
@@ -76,15 +77,18 @@ def train():
                 imgs, labels = imgs.to(DEVICE), labels.to(DEVICE)
                 outputs = model(imgs)
                 loss = criterion(outputs, labels)
+
                 val_loss += loss.item() * imgs.size(0)
                 val_correct += calculate_correct(outputs, labels)
 
+        # Test
         test_loss = test_correct = 0.0
         with torch.no_grad():
             for imgs, labels in tqdm(test_loader, desc=f"Test Epoch {epoch + 1}/{NUM_EPOCHS}"):
                 imgs, labels = imgs.to(DEVICE), labels.to(DEVICE)
                 outputs = model(imgs)
                 loss = criterion(outputs, labels)
+
                 test_loss += loss.item() * imgs.size(0)
                 test_correct += calculate_correct(outputs, labels)
 
@@ -114,6 +118,7 @@ def train():
             f"test loss: {avg_test_loss:.4f} | test acc: {avg_test_acc:.4f}"
         )
 
+        # save the best model
         if avg_val_acc > best_val_acc:
             best_val_acc = avg_val_acc
             best_checkpoint = {
@@ -125,6 +130,7 @@ def train():
             }
             torch.save(best_checkpoint, save_path / "best_model.pth")
 
+        # checkpoint saving (every 10 epochs)
         if (epoch + 1) % 10 == 0:
             torch.save({
                 'epoch': epoch + 1,
@@ -134,13 +140,15 @@ def train():
                 'best_val_acc': best_val_acc,
             }, save_path / f"checkpoint_epoch_{epoch + 1}.pth")
 
-        torch.save({
+        # always save the latest checkpoint for resuming
+        latest = {
             'epoch': epoch + 1,
             'model_state_dict': model.state_dict(),
             'optimizer_state_dict': optimizer.state_dict(),
             'scheduler_state_dict': scheduler.state_dict(),
-            'best_val_acc': best_val_acc,
-        }, save_path / "latest_checkpoint.pth")
+            'best_val_acc': best_val_acc
+        }
+        torch.save(latest, save_path / "latest_checkpoint.pth")
 
     tqdm.write(f"\n🎉 Training complete!")
     tqdm.write(f"💾 Best model saved with acc: {best_val_acc:.4f}")
