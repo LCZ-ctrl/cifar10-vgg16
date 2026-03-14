@@ -97,7 +97,7 @@ The VGG-16 model is a convolutional neural network (CNN) architecture that was p
 It typically consists of 16 layers, including 13 convolutional layers and 3 fully connected layers. These layers are organized into blocks, with each block containing multiple convolutional layers followed by a max-pooling layer for downsampling.  
 <br>
 <p align="center">
-  <img src="./images/vgg16.png" height="200" />
+  <img src="./images/vgg16.png" height="400" />
   <br>
   <em><strong>VGG-16 Architecture</strong></em>
 </p>
@@ -161,3 +161,5 @@ After training for 80 epochs, the VGG-16 model could achieve 93.54% accuracy on 
   <em><strong>Loss Curve</strong></em>
 </p>
 <br><br>
+
+<em><strong>My pre-trained model:</strong></em> [model](https://drive.google.com/file/d/1ZfnKQ4ecPfIdLZjyHnjD5e7vP_aQ19U3/view?usp=drive_link)
