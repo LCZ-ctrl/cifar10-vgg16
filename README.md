@@ -28,6 +28,8 @@ I'm using `PyTorch 2.10.0+cu128` in `Python 3.12.0`.
 ├── predict.py
 └── eval.py
 ```
+<em>Read files in order:</em>  
+> config.py → utils.py → prepare_data.py → dataset.py → model.py → train.py → eval.py → predict.py
 
 ## Requirements
 ```
@@ -41,7 +43,7 @@ tqdm==4.67.3
 
 ## Dataset
 The dataset comes from Kaggle website: [CIFAR-10](https://www.kaggle.com/datasets/oxcdcd/cifar10). The raw training set has 50,000 images, the raw test set has 10,000 images. Each image is a 32 x 32 RGB image.    
-Unlike the previous binary classification problem [Dogs vs. Cats](https://github.com/LCZ-ctrl/Dogs-vs-Cats), this is a classification problem with 10 categories. The 10 labels are: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck  
+Unlike the previous binary classification problem [Dogs vs. Cats](https://github.com/LCZ-ctrl/dogs-vs-cats-resnet18), this is a classification problem with 10 categories. The 10 labels are: airplane, automobile, bird, cat, deer, dog, frog, horse, ship, truck  
 <br>
 <p align="center">
   <img src="./images/01.png" width="150" />
