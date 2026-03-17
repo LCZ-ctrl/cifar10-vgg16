@@ -55,13 +55,3 @@ def predict_random_one():
 
 if __name__ == "__main__":
     predict_random_one()
-# train_loader, val_loader = get_train_val_loaders()
-# train_dataset = train_loader.dataset
-# idx = random.randint(0, len(train_dataset) - 1)
-# img_tensor, true_label = train_dataset[idx]
-# img_path = train_dataset.samples[idx][0]
-# original_pil = Image.open(img_path).convert('RGB')
-# plt.figure(figsize=(4, 4))
-# plt.imshow(original_pil)
-# plt.axis('off')
-# plt.show()

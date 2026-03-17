@@ -4,6 +4,7 @@ import random
 from pathlib import Path
 from tqdm import tqdm
 
+
 # train: 0.9, val: 0.1
 def prepare_data(
         raw_train_dir: str = "data/raw/train",
